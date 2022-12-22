@@ -4,9 +4,13 @@
   <groupId>org.cysecurity</groupId>
   <artifactId>JavaVulnerableLab</artifactId>
   <packaging>war</packaging>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.1</version>
   <name>JavaVulnerableLab Maven Webapp</name>
   <url>http://maven.apache.org</url>
+  <properties>
+     <maven.compiler.source>1.8</maven.compiler.source>
+     <maven.compiler.target>1.8</maven.compiler.target>
+</properties>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -35,13 +39,31 @@
 		<version>4.0.1.Final</version>
 	</dependency>
 	<dependency>
-    <groupId>javax.servlet</groupId>
-    <artifactId>servlet-api</artifactId>
-    <version>2.3</version>
-    <scope>provided</scope>
-</dependency>	 	
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>servlet-api</artifactId>
+	    <version>2.3</version>
+	    <scope>provided</scope>
+	</dependency>	 	
   </dependencies>
+  <distributionManagement>
+        <repository>
+            <id>nexus-rel-upload</id>
+            <name>Internal Releases</name>
+            <url>https://nexus-repo-oss.demo.cbc.beescloud.com/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus-snap-upload</id>
+            <name>Internal Snapshot Releases</name>
+            <url>https://nexus-repo-oss.demo.cbc.beescloud.com/repository/maven-snapshots/</url>
+        </snapshotRepository>
+  </distributionManagement>
   <build>
-    <finalName>JavaVulnerableLab</finalName>
-  </build>
+    <plugins>
+        <plugin>
+		    <groupId>org.apache.maven.plugins</groupId>
+		    <artifactId>maven-war-plugin</artifactId>
+		    <version>3.3.1</version>
+		</plugin>
+    </plugins>
+</build>
 </project>
